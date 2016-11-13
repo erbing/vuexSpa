@@ -5,12 +5,16 @@
   "main": "index.html",
   "scripts": {
     "init": "npm install --registry=https://registry.npm.taobao.org",
+    "debug": "webpack-dev-server --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "zigzag",
   "dependencies": {
     "vue": "^2.0.5",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^9.9.0",
     "vue-router": "^2.0.1",
+    "vue-style-loader": "^1.0.0",
     "vuex": "^2.0.0"
   },
   "devDependencies": {
