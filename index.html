@@ -5,15 +5,18 @@
     <title>vueJs ---  中文社区</title>
 </head>
 <body>
-    
+
     <div id="app">
-        <h1>Hello App</h1>
+    <h1>Hello App!</h1>
+    <p>
+        <router-link to="/foo">Go to Foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    
+    <router-view></router-view>
     </div>
 
-    <router-link to="/home">go to home</router-link>
-    <router-link to="/comm">go to comm</router-link>
 
-    <router-view></router-view>
     <script src="build/bundle.js"></script>
 </body>
 </html>

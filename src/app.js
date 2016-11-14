@@ -1,20 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-const Home = {
-    template: '<div> this is home </div>'
-};
 
-const Comm = {
-    template: '<div> this is comm </div>'
-};
+Vue.use(VueRouter)
 
-Vue.use(VueRouter);
+const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>bar</div>' }
 
-const router = [
-    { path: '/home', component: Home},
-    { path: '/comm', component: Comm}
-];
+
+const routes = [
+  { path: '/foo', component: Foo },
+  { path: '/bar', component: Bar }
+]
+
+const router = new VueRouter({
+  routes
+})
 
 
 const app = new Vue({
