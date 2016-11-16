@@ -23,6 +23,7 @@ var getEntry = function() {
         });
     return entry;
 };
+
 // 判断编译环境 （运行环境）
 var prod = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -36,6 +37,11 @@ module.exports = {
         path:__dirname,
         publicPath:"/",
         filename:"build/[name].js"
+    },
+    vue: {
+        loaders: {
+            js: 'babel'
+        }
     },
     module:{
         loaders: [{         // 处理图片
@@ -53,6 +59,10 @@ module.exports = {
         {                // html 中的  img src 的路径
             test: /\.html$/,
             loader: 'html?attrs=img:src img:srcset'
+        },
+        {
+        test: /\.vue$/,
+        loader: 'vue'
         }]
     },
     resolve:{

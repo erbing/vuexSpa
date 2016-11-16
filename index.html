@@ -7,14 +7,25 @@
 <body>
 
     <div id="app">
-    <h1>Hello App!</h1>
-    <p>
-        <router-link to="/foo">Go to Foo</router-link>
-        <router-link to="/bar">Go to Bar</router-link>
-    </p>
-    
-    <router-view></router-view>
-    </div>
+        <header class="header">
+            <a id="logo" href="/">
+                <img src="/src/static/default/vue-logo.png" />
+                <span>Run-Vue</span>
+            </a>      
+            
+            <ul id="nav">
+                <router-link to="/foo" tag="a">组件库</router-link>
+                <router-link to="/foo" tag="a">源码解析</router-link>
+                <router-link to="/bar" tag="a">社区</router-link>
+                <router-link to="/head" tag="a">反馈</router-link>
+            </ul>
+        </header>
 
+        <router-view></router-view>
+
+        <footer class="footer" id="footer">
+            <strong>♥</strong>  VueJS —— RedWings
+        </footer>
+    </div>
 </body>
 </html>
