@@ -9,26 +9,26 @@ const CleanPlugin = require('clean-webpack-plugin');                // webpack�
 
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;     // webpack 优化 提取公共文件
 
-var getEntry = function() {
-    var entry = {};
-    //读取开发目录,并进行路径裁剪
-    glob.sync('./src/**/*.js')
-        .forEach(function(name) {
-            var start = name.indexOf('src/') + 4,
-                end = name.length - 3;
-            var n = name.slice(start, end);
-            n = n.slice(0, n.lastIndexOf('/'));
-            //保存各个组件的入口
-            entry[n] = name;
-        });
-    return entry;
-};
+// var getEntry = function() {
+//     var entry = {};
+//     //读取开发目录,并进行路径裁剪
+//     glob.sync('./src/app.js')
+//         .forEach(function(name) {
+//             var start = name.indexOf('src/') + 4,
+//                 end = name.length - 3;
+//             var n = name.slice(start, end);
+//             n = n.slice(0, n.lastIndexOf('/'));
+//             //保存各个组件的入口
+//             entry[n] = name;
+//         });
+//     return entry;
+// };
 
 // 判断编译环境 （运行环境）
 var prod = process.env.NODE_ENV === 'production' ? true : false;
 
 module.exports = {
-    entry: getEntry(),
+    entry: './src/app.js',
     output:{
         // path: path.resolve(__dirname, prod ? "./build" : "./dist"),
         // filename: prod ? "build/[name].min.js" : "build/[name].js",
@@ -49,7 +49,9 @@ module.exports = {
             loader: 'url?limit=10000&name=images/[name].[ext]'
         }, {                // 处理 less、css 文件
             test: /\.less$/,
-            loader: ExtractTextPlugin.extract('style', 'css!less')
+            loader: 'style!css!less',
+            // make sure to exclude 3rd party code in node_modules
+            exclude: /node_modules/
         }, 
         {                // 处理 js 文件
             test: /\.js[x]?$/,
@@ -61,8 +63,8 @@ module.exports = {
             loader: 'html?attrs=img:src img:srcset'
         },
         {
-        test: /\.vue$/,
-        loader: 'vue'
+            test: /\.vue$/,
+            loader: 'vue'
         }]
     },
     resolve:{

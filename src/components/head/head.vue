@@ -20,6 +20,8 @@
 
 
 <style lang="less">
-
+    h1{
+        font-size: 18px;
+    }
 
 </style>
