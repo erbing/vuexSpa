@@ -13,12 +13,11 @@ Vue.use(VueRouter);
 const routers = [
   { path: '/foo', component: Foo },
   { path: '/bar', component: Bar },
-  { path: '/head', component: Head}
+  { path: '/head', component: Head},
 ]
 
 const Foo = { template: '<div>foo</div>' };
 const Bar = { template: '<div>bar</div>' };
-
 
 
 const router = new VueRouter({
